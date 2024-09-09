@@ -26,8 +26,9 @@ export const getTransactions = async (
       const date = new Date((transaction.blockTime || 0) * 1000);
 
       // Fetch transaction details to get the amount transferred
-      const txDetails = await solanaConnection.getConfirmedTransaction(
-        transaction.signature
+      const txDetails = await solanaConnection.getTransaction(
+        transaction.signature,
+        { commitment: "confirmed" }
       );
       const amount =
         (txDetails?.meta?.postBalances[0] || 0) -
