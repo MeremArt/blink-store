@@ -18,6 +18,6 @@ export default class ProductService {
 
   async getProduct(query: Partial<TProduct>) {
     const product = await Product.find(query);
-    return product;
+    return;
   }
 }
